@@ -187,9 +187,9 @@ SELECT f.title AS nombre_categoría_family
 
 -- Solución:
 SELECT a.first_name AS nombre, a.last_name AS apellido
-FROM actor AS a INNER JOIN film_actor AS fa ON a.actor_id = fa.actor_id
-GROUP BY a.actor_id
-HAVING COUNT(fa.film_id) > 10;
+	FROM actor AS a INNER JOIN film_actor AS fa ON a.actor_id = fa.actor_id
+	GROUP BY a.actor_id
+	HAVING COUNT(fa.film_id) > 10;
 
 
 -- Forma más compleja usando CTEs, teniendo en cuenta tabla film:
@@ -199,9 +199,8 @@ WITH condicion_peli_por_actor AS (
     GROUP BY fa.actor_id
     HAVING COUNT(fa.film_id) > 10)
 SELECT a.first_name, a.last_name
-FROM actor AS a
-INNER JOIN condicion_peli_por_actor AS pa
-ON a.actor_id = pa.actor_id;
+	FROM actor AS a
+	INNER JOIN condicion_peli_por_actor AS pa ON a.actor_id = pa.actor_id;
 
 /* 19. Encuentra el título de todas las películas que son "R" y tienen una duración mayor a 2 horas en la
 tabla film. */
@@ -209,8 +208,8 @@ tabla film. */
 -- 2 horas son 120 minutos
 
 SELECT title AS nombre_pelicula
-FROM film
-wHERE length > 120 AND rating LIKE "%R";
+	FROM film
+	wHERE length > 120 AND rating LIKE "%R";
 
 /* 20. Encuentra las categorías de películas que tienen un promedio de duración superior a 120 minutos y
 muestra el nombre de la categoría junto con el promedio de duración */
